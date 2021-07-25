@@ -4,12 +4,14 @@ using System.Text;
 
 namespace InventoryManagementSystem.Models
 {
-    public class Warehouse
+    public class Company
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public List<Product> Products { get; set; }
-        public Company Company { get; set; }
+        public List<Order> Orders { get; set; }
+        public List<Warehouse> Warehouses { get; set; }
+
         public override string ToString()
         {
             return $"{Name}";

@@ -14,5 +14,6 @@ namespace InventoryManagementSystem.Models
         public string Description { get; set; }
         public bool IsDelivered { get; set; }
         public Warehouse Warehouse { get; set; }
+        public Company Company { get; set; }
     }
 }

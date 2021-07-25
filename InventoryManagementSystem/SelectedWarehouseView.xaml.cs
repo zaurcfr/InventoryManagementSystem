@@ -1,5 +1,4 @@
-﻿using InventoryManagementSystem.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -15,19 +14,13 @@ using System.Windows.Shapes;
 namespace InventoryManagementSystem
 {
     /// <summary>
-    /// Interaction logic for WarehouseView.xaml
+    /// Interaction logic for SelectedWarehouseView.xaml
     /// </summary>
-    public partial class WarehouseView : UserControl
+    public partial class SelectedWarehouseView : UserControl
     {
-        public WarehouseView()
+        public SelectedWarehouseView()
         {
             InitializeComponent();
-            this.DataContext = new WarehouseViewModel();
-        }
-
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            WarehouseGrid.Visibility = Visibility.Visible;
         }
     }
 }

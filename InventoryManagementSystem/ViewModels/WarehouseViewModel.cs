@@ -1,4 +1,5 @@
-﻿using InventoryManagementSystem.Models;
+﻿using InventoryManagementSystem.Command;
+using InventoryManagementSystem.Models;
 using InventoryManagementSystem.Repository;
 using PropertyChanged;
 using System;
@@ -12,6 +13,10 @@ namespace InventoryManagementSystem.ViewModels
     public class WarehouseViewModel : BaseViewModel
     {
         public ObservableCollection<Warehouse> Warehouses { get; set; } = new ObservableCollection<Warehouse>();
+
+        public event Action SelectedWarehouseEvent;
+        public RelayCommand NavToSelectedWarehouseCommand { get; set; }
+
         public WarehouseViewModel()
         {
             //Warehouse warehouse1 = new Warehouse() { Name = "Warehouse1" };
@@ -23,6 +28,13 @@ namespace InventoryManagementSystem.ViewModels
             {
                 Warehouses.Add(item);
             }
+
+            NavToSelectedWarehouseCommand = new RelayCommand(SelectedWarehouse);
+        }
+
+        private void SelectedWarehouse(object obj)
+        {
+            SelectedWarehouseEvent?.Invoke();
         }
     }
 }

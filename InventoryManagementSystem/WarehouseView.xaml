@@ -8,7 +8,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="570" d:DesignWidth="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+        </Grid.RowDefinitions>
+
         <ComboBox
+            Grid.Row="0"
             Style="{StaticResource MaterialDesignOutlinedComboBox}"
             materialDesign:HintAssist.Hint="Select Warehouse"
             ItemsSource="{Binding Warehouses}"
@@ -17,7 +23,8 @@
             materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Margin="20">
+            Margin="20"
+            SelectionChanged="ComboBox_SelectionChanged">
             <ComboBox.SelectedItem>
                 <Binding
                     Path="SelectedValidationOutlined"
@@ -26,5 +33,55 @@
                 </Binding>
             </ComboBox.SelectedItem>
         </ComboBox>
+
+        <Grid x:Name="WarehouseGrid" Grid.Row="1" Visibility="Visible">
+
+            <GroupBox
+                Header="Shadow Header"
+                Style="{DynamicResource MaterialDesignGroupBox}"
+                Margin="10,10,410,10"
+                materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                BorderThickness="0"
+                materialDesign:ColorZoneAssist.Background="MidnightBlue"
+                materialDesign:ColorZoneAssist.Foreground="WhiteSmoke"
+                materialDesign:ColorZoneAssist.Mode="Custom">
+                <TextBlock
+                    Margin="6,6,6,6"
+                    TextWrapping="Wrap"
+                    Text="Short loin picanha boudin pork belly. Ground round porchetta biltong, cow t-bone tri-tip strip steak chuck filet mignon jowl turducken. Landjaeger strip steak pork chop, jowl sirloin pork capicola andouille. Kevin ribeye tongue, drumstick hamburger frankfurter t-bone corned beef beef biltong cow venison. Biltong picanha bresaola pork belly, filet mignon spare ribs doner pork chop kielbasa. Swine flank drumstick pork belly pancetta spare ribs rump filet mignon." />
+            </GroupBox>
+
+            <GroupBox
+                Header="Shadow Header"
+                Style="{DynamicResource MaterialDesignGroupBox}"
+                Margin="410,10,10,10"
+                materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                BorderThickness="0"
+                materialDesign:ColorZoneAssist.Background="MidnightBlue"
+                materialDesign:ColorZoneAssist.Foreground="WhiteSmoke"
+                materialDesign:ColorZoneAssist.Mode="Custom">
+                <TextBlock
+                    Margin="6,6,6,6"
+                    TextWrapping="Wrap"
+                    Text="Short loin picanha boudin pork belly. Ground round porchetta biltong, cow t-bone tri-tip strip steak chuck filet mignon jowl turducken. Landjaeger strip steak pork chop, jowl sirloin pork capicola andouille. Kevin ribeye tongue, drumstick hamburger frankfurter t-bone corned beef beef biltong cow venison. Biltong picanha bresaola pork belly, filet mignon spare ribs doner pork chop kielbasa. Swine flank drumstick pork belly pancetta spare ribs rump filet mignon." />
+            </GroupBox>
+            
+            <GroupBox
+                Header="Shadow Header"
+                Style="{DynamicResource MaterialDesignGroupBox}"
+                Margin="10,210,10,10"
+                materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                BorderThickness="0"
+                materialDesign:ColorZoneAssist.Background="MidnightBlue"
+                materialDesign:ColorZoneAssist.Foreground="WhiteSmoke"
+                materialDesign:ColorZoneAssist.Mode="Custom">
+                <TextBlock
+                    Margin="6,6,6,6"
+                    TextWrapping="Wrap"
+                    Text="Short loin picanha boudin pork belly. Ground round porchetta biltong, cow t-bone tri-tip strip steak chuck filet mignon jowl turducken. Landjaeger strip steak pork chop, jowl sirloin pork capicola andouille. Kevin ribeye tongue, drumstick hamburger frankfurter t-bone corned beef beef biltong cow venison. Biltong picanha bresaola pork belly, filet mignon spare ribs doner pork chop kielbasa. Swine flank drumstick pork belly pancetta spare ribs rump filet mignon." />
+            </GroupBox>
+
+        </Grid>
+
     </Grid>
 </UserControl>

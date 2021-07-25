@@ -8,6 +8,7 @@
         xmlns:viewModels ="clr-namespace:InventoryManagementSystem.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000" MinHeight="600" MaxHeight="600" MinWidth="1000" MaxWidth="1000" WindowStartupLocation="CenterScreen">
+    
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewModels:HomeViewModel}">
             <local:HomeView></local:HomeView>
@@ -27,7 +28,9 @@
         <DataTemplate DataType="{x:Type viewModels:WarehouseViewModel}">
             <local:WarehouseView></local:WarehouseView>
         </DataTemplate>
-        
+        <DataTemplate DataType="{x:Type viewModels:SelectedWarehouseViewModel}">
+            <local:SelectedWarehouseView></local:SelectedWarehouseView>
+        </DataTemplate>
     </Window.Resources>
     <Window.DataContext>
         <viewModels:MainViewModel></viewModels:MainViewModel>
@@ -56,7 +59,7 @@
                     Content="Home"
                     Margin="0,0"
                     materialDesign:ButtonAssist.CornerRadius="7"
-                    Command="{Binding ProductCommand}"/>
+                    Command="{Binding NavToHomeCommand}"/>
                 <Button
                     Style="{StaticResource MaterialDesignRaisedDarkButton}"
                     Height="50"

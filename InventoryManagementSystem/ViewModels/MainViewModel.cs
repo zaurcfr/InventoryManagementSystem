@@ -11,30 +11,39 @@ namespace InventoryManagementSystem.ViewModels
     {
         public BaseViewModel CurrentVM { get; set; }
 
-        public HomeViewModel HomeViewModel { get; set; }
+        private HomeViewModel _homeViewModel { get; set; }
         private ProductViewModel _productsViewModel { get; set; }
         private AddProductViewModel _addProductsViewModel { get; set; }
         private OrderViewModel _ordersViewModel { get; set; }
         private AddOrderViewModel _addOrdersViewModel { get; set; }
         private WarehouseViewModel _warehouseViewModel { get; set; }
+        private SelectedWarehouseViewModel _selectedWarehouseViewModel { get; set; }
 
+        public event Action NavigateToHome;
         public event Action NavigateToProducts;
         public event Action NavigateToOrders;
         public event Action NavigateToWarehouses;
+        public RelayCommand NavToHomeCommand { get; set; }
         public RelayCommand NavToProductCommand { get; set; }
         public RelayCommand NavToOrderCommand { get; set; }
         public RelayCommand NavToWarehouseCommand { get; set; }
+
         public MainViewModel()
         {
-            HomeViewModel = new HomeViewModel();
+            _homeViewModel = new HomeViewModel();
             _productsViewModel = new ProductViewModel();
             _addProductsViewModel = new AddProductViewModel();
             _ordersViewModel = new OrderViewModel();
             _addOrdersViewModel = new AddOrderViewModel();
             _warehouseViewModel = new WarehouseViewModel();
+            _selectedWarehouseViewModel = new SelectedWarehouseViewModel();
 
             _productsViewModel.AddProductEvent += NavigateToAddProductView;
             _ordersViewModel.AddOrderEvent += NavigateToAddOrderView;
+            _warehouseViewModel.SelectedWarehouseEvent += NavigateToSelectedWarehouseView;
+
+            NavigateToHome += NavigateToHomeView;
+            NavToHomeCommand = new RelayCommand((e) => { NavigateToHome?.Invoke(); });
 
             NavigateToProducts += NavigateToProductsView;
             NavToProductCommand = new RelayCommand((e) => { NavigateToProducts?.Invoke(); });
@@ -44,11 +53,23 @@ namespace InventoryManagementSystem.ViewModels
 
             NavigateToWarehouses += NavigateToWarehousesView;
             NavToWarehouseCommand = new RelayCommand((e) => { NavigateToWarehouses?.Invoke(); });
+
+        }
+
+        
+
+        private void NavigateToHomeView()
+        {
+            CurrentVM = _homeViewModel;
         }
 
         private void NavigateToWarehousesView()
         {
             CurrentVM = _warehouseViewModel;
+        }
+        private void NavigateToSelectedWarehouseView()
+        {
+            CurrentVM = _selectedWarehouseViewModel;
         }
 
         private void NavigateToAddOrderView()
