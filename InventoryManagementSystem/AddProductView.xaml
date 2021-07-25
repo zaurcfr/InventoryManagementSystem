@@ -7,9 +7,9 @@
              xmlns:local="clr-namespace:InventoryManagementSystem"
              mc:Ignorable="d" 
              d:DesignHeight="570" d:DesignWidth="800">
-    <Grid>
-        <StackPanel Background="Gray">
-            <TextBox
+    <Grid Background="Gray">
+
+        <TextBox
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 VerticalAlignment="Top"
                 Height="50"
@@ -18,9 +18,9 @@
                 VerticalScrollBarVisibility="Auto"
                 materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
                 materialDesign:HintAssist.Hint="Name"
-                Margin="40,20,500,10"
+                Margin="80,30,450,10"
                 Text="{Binding Product.Name, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox
+        <TextBox
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 VerticalAlignment="Top"
                 Height="50"
@@ -29,9 +29,9 @@
                 VerticalScrollBarVisibility="Auto"
                 materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
                 materialDesign:HintAssist.Hint="Status"
-                Margin="40,10,500,10"
+                Margin="450,30,80,10"
                 Text="{Binding Product.Status, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox
+        <TextBox
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 VerticalAlignment="Top"
                 Height="50"
@@ -40,9 +40,9 @@
                 VerticalScrollBarVisibility="Auto"
                 materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
                 materialDesign:HintAssist.Hint="Price"
-                Margin="40,10,500,10"
+                Margin="80,130,450,10"
                 Text="{Binding Product.Price, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox
+        <TextBox
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 VerticalAlignment="Top"
                 Height="50"
@@ -51,9 +51,9 @@
                 VerticalScrollBarVisibility="Auto"
                 materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
                 materialDesign:HintAssist.Hint="Quantity"
-                Margin="40,10,500,10"
+                Margin="450,130,80,10"
                 Text="{Binding Product.Quantity, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox
+        <TextBox
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 VerticalAlignment="Top"
                 Height="50"
@@ -62,9 +62,9 @@
                 VerticalScrollBarVisibility="Auto"
                 materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
                 materialDesign:HintAssist.Hint="Category"
-                Margin="40,10,500,10"
+                Margin="80,230,450,10"
                 Text="{Binding Product.Category, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox
+        <TextBox
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 VerticalAlignment="Top"
                 Height="50"
@@ -73,18 +73,28 @@
                 VerticalScrollBarVisibility="Auto"
                 materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
                 materialDesign:HintAssist.Hint="Description"
-                Margin="40,10,500,10"
+                Margin="450,230,80,10"
                 Text="{Binding Product.Description, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-            <Button
+        <ComboBox
+                Grid.Row="0"
+                Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                materialDesign:HintAssist.Hint="Select Warehouse"
+                ItemsSource="{Binding Warehouses}"
+                materialDesign:TextFieldAssist.HasClearButton="True"
+                Height="50"
+                materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
+                Margin="80,150,450,10"/>
+        
+        <Button
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Height="50"
                 ToolTip=""
                 Background="#302b63"
                 Foreground="WhiteSmoke"
                 Content="Add"
-                Margin="200,10,500,10"
+                Margin="300,350,300,10"
                 materialDesign:ButtonAssist.CornerRadius="7"
                 Command="{Binding AddCommand}"/>
-        </StackPanel>
+
     </Grid>
 </UserControl>

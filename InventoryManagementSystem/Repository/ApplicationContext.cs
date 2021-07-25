@@ -8,7 +8,7 @@ using System.Text;
 
 namespace InventoryManagementSystem.Repository
 {
-    class ApplicationContext : DbContext
+    public class ApplicationContext : DbContext
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<User> Users { get; set; }
@@ -28,10 +28,11 @@ namespace InventoryManagementSystem.Repository
         {
             var builder = new ConfigurationBuilder();
             builder.SetBasePath(Directory.GetCurrentDirectory());
-            builder.AddJsonFile("C:\\Users\\Zaur\\source\\repos\\InventoryManagementSystem\\InventoryManagementSystem\\appsettings.json");
+            //builder.AddJsonFile("C:\\Users\\Zaur\\source\\repos\\InventoryManagementSystem\\InventoryManagementSystem\\appsettings.json");
+            builder.AddJsonFile("C:\\Users\\cefe_a8xp\\source\\repos\\InventoryManagementSystem\\InventoryManagementSystem\\appsettings.json");
             var config = builder.Build();
 
-            string connectionString = config.GetConnectionString("DefaultConnection");
+            string connectionString = config.GetConnectionString("StepConnection");
             optionsBuilder.UseSqlServer(connectionString);
             base.OnConfiguring(optionsBuilder);
         }

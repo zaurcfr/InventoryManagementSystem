@@ -1,6 +1,7 @@
 ﻿using InventoryManagementSystem.Command;
 using InventoryManagementSystem.Models;
 using InventoryManagementSystem.Repository;
+using Microsoft.EntityFrameworkCore;
 using PropertyChanged;
 using System;
 using System.Collections.Generic;
@@ -39,7 +40,7 @@ namespace InventoryManagementSystem.ViewModels
             };
             db.Orders.Add(order1);
             db.Orders.Add(order2);
-            foreach (var item in db.Orders)
+            foreach (var item in db.Orders.Include(o => o.Company).Include(o => o.Warehouse))
             {
                 Orders.Add(item);
             }

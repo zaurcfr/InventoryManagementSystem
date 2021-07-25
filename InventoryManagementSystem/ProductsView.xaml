@@ -33,9 +33,27 @@
             Command="{Binding AddProductCommand}"/>
 
         <DataGrid 
-            Grid.Row="2" 
+            Grid.Row="2"
+            Name="ProductsGrid"
             ItemsSource="{Binding Products}"
             SelectedItem="{Binding SelectedProduct,Mode=OneWayToSource}">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+                                Height="40"
+                                ToolTip=""
+                                Background="#302b63"
+                                Foreground="WhiteSmoke"
+                                Content="Delete"
+                                materialDesign:ButtonAssist.CornerRadius="7"
+                                Command="{Binding ElementName=ProductsGrid,Path=DataContext.DeleteCommand}"
+                                CommandParameter="{Binding}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
         </DataGrid>
     </Grid>
 </UserControl>
