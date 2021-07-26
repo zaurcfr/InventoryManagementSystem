@@ -6,35 +6,49 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace InventoryManagementSystem.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
     public class WarehouseViewModel : BaseViewModel
     {
-        public ObservableCollection<Warehouse> Warehouses { get; set; } = new ObservableCollection<Warehouse>();
-
-        public event Action SelectedWarehouseEvent;
-        public RelayCommand NavToSelectedWarehouseCommand { get; set; }
+        public ObservableCollection<Warehouse> Warehouses { get; set; }
+        public Warehouse Warehouse { get; set; }
+        public ApplicationContext db { get; set; } = new ApplicationContext();
+        public RelayCommand SelectCommand { get; set; }
+        public int TotalCountOfProducts { get; set; }
+        public double TotalPriceOfProducts { get; set; }
+        public int TotalCountOfOrders { get; set; }
+        public double TotalPriceOfOrders { get; set; }
 
         public WarehouseViewModel()
         {
-            //Warehouse warehouse1 = new Warehouse() { Name = "Warehouse1" };
-            //Warehouse warehouse2 = new Warehouse() { Name = "Warehouse2" };
-            //Warehouses.Add(warehouse1);
-            //Warehouses.Add(warehouse2);
-            using ApplicationContext db = new ApplicationContext();
-            foreach (var item in db.Warehouses)
-            {
-                Warehouses.Add(item);
-            }
+            Warehouses = new ObservableCollection<Warehouse>(db.Warehouses);
+            SelectCommand = new RelayCommand(Select);
 
-            NavToSelectedWarehouseCommand = new RelayCommand(SelectedWarehouse);
         }
 
-        private void SelectedWarehouse(object obj)
+        private void Select(object obj)
         {
-            SelectedWarehouseEvent?.Invoke();
+            foreach (var item in db.Products)
+            {
+                if (item.Warehouse == Warehouse)
+                {
+                    TotalCountOfProducts += item.Quantity;
+                    TotalPriceOfProducts += item.Price;
+                }
+            }
+            foreach (var item in db.Orders)
+            {
+                if (item.Warehouse == Warehouse)
+                {
+                    TotalCountOfOrders += item.Quantity;
+                    TotalPriceOfOrders += item.Price;
+                }
+            }
         }
+
     }
 }

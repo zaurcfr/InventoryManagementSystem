@@ -7,7 +7,7 @@
              xmlns:local="clr-namespace:InventoryManagementSystem"
              mc:Ignorable="d" 
              d:DesignHeight="570" d:DesignWidth="800">
-    <Grid>
+    <!--<Grid>
         <StackPanel Background="Gray">
             <TextBox
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
@@ -75,5 +75,88 @@
                 materialDesign:ButtonAssist.CornerRadius="7"
                 Command="{Binding AddCommand}"/>
         </StackPanel>
+    </Grid>-->
+
+    <Grid>
+
+        <TextBox
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                VerticalAlignment="Top"
+                Height="50"
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto"
+                materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
+                materialDesign:HintAssist.Hint="Name"
+                Margin="80,30,450,10"
+                Text="{Binding Order.Name, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                VerticalAlignment="Top"
+                Height="50"
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto"
+                materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
+                materialDesign:HintAssist.Hint="Description"
+                Margin="450,30,80,10"
+                Text="{Binding Order.Description, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                VerticalAlignment="Top"
+                Height="50"
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto"
+                materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
+                materialDesign:HintAssist.Hint="Price"
+                Margin="80,130,450,10"
+                Text="{Binding Order.Price, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                VerticalAlignment="Top"
+                Height="50"
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto"
+                materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
+                materialDesign:HintAssist.Hint="Quantity"
+                Margin="450,130,80,10"
+                Text="{Binding Order.Quantity, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                VerticalAlignment="Top"
+                Height="50"
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto"
+                materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
+                materialDesign:HintAssist.Hint="Category"
+                Margin="80,230,450,10"
+                Text="{Binding Order.Category, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        
+        <ComboBox
+            Grid.Row="0"
+            Style="{StaticResource MaterialDesignOutlinedComboBox}"
+            materialDesign:HintAssist.Hint="Select Warehouse"
+            VerticalAlignment="Top"
+            ItemsSource="{Binding Warehouses}"
+            materialDesign:TextFieldAssist.HasClearButton="True"
+            Height="50"
+            materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
+            Margin="450,230,80,10"
+            SelectedItem="{Binding Warehouse,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Button
+                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                Height="50"
+                ToolTip=""
+                Background="#302b63"
+                Foreground="WhiteSmoke"
+                Content="Add"
+                Margin="300,350,300,10"
+                materialDesign:ButtonAssist.CornerRadius="7"
+                Command="{Binding AddCommand}"/>
+
     </Grid>
 </UserControl>

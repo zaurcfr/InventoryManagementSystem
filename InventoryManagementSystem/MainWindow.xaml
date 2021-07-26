@@ -28,8 +28,11 @@
         <DataTemplate DataType="{x:Type viewModels:WarehouseViewModel}">
             <local:WarehouseView></local:WarehouseView>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewModels:SelectedWarehouseViewModel}">
-            <local:SelectedWarehouseView></local:SelectedWarehouseView>
+        <DataTemplate DataType="{x:Type viewModels:DeleteDialogViewModel}">
+            <local:DeleteDialogView></local:DeleteDialogView>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:EditProductViewModel}">
+            <local:EditProductView></local:EditProductView>
         </DataTemplate>
     </Window.Resources>
     <Window.DataContext>
@@ -98,7 +101,8 @@
                     Foreground="WhiteSmoke"
                     Content="Quit"
                     Margin="0,0"
-                    materialDesign:ButtonAssist.CornerRadius="7"/>
+                    materialDesign:ButtonAssist.CornerRadius="7"
+                    Click="Quit"/>
 
             </StackPanel>
         </Grid>

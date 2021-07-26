@@ -1,5 +1,6 @@
 ﻿<UserControl x:Class="InventoryManagementSystem.WarehouseView"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -23,49 +24,77 @@
             materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Margin="20"
-            SelectionChanged="ComboBox_SelectionChanged">
-            <ComboBox.SelectedItem>
-                <Binding
-                    Path="SelectedValidationOutlined"
-                    Mode="TwoWay"
-                    UpdateSourceTrigger="PropertyChanged">
-                </Binding>
-            </ComboBox.SelectedItem>
+            Margin="20,10"
+            SelectedItem="{Binding Warehouse}">
+            
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding SelectCommand}"></i:InvokeCommandAction>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+
         </ComboBox>
 
-        <Grid x:Name="WarehouseGrid" Grid.Row="1" Visibility="Visible">
+        <Grid x:Name="WarehouseGrid" Grid.Row="1" Visibility="Visible" Margin="0,40,0,0">
 
             <GroupBox
-                Header="Shadow Header"
+                Header="Warehouse Info"
                 Style="{DynamicResource MaterialDesignGroupBox}"
-                Margin="10,10,410,10"
+                Margin="10,10,410,210"
                 materialDesign:ShadowAssist.ShadowDepth="Depth3"
                 BorderThickness="0"
                 materialDesign:ColorZoneAssist.Background="MidnightBlue"
                 materialDesign:ColorZoneAssist.Foreground="WhiteSmoke"
                 materialDesign:ColorZoneAssist.Mode="Custom">
-                <TextBlock
-                    Margin="6,6,6,6"
-                    TextWrapping="Wrap"
-                    Text="Short loin picanha boudin pork belly. Ground round porchetta biltong, cow t-bone tri-tip strip steak chuck filet mignon jowl turducken. Landjaeger strip steak pork chop, jowl sirloin pork capicola andouille. Kevin ribeye tongue, drumstick hamburger frankfurter t-bone corned beef beef biltong cow venison. Biltong picanha bresaola pork belly, filet mignon spare ribs doner pork chop kielbasa. Swine flank drumstick pork belly pancetta spare ribs rump filet mignon." />
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Warehouse Id:" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                        <TextBlock Text="{Binding Warehouse.Id}" Margin="10,0,0,0" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Warehouse Name:" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                        <TextBlock Text="{Binding Warehouse.Name}" Margin="10,0,0,0" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Company:" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                        <TextBlock Text="{Binding Warehouse.Company}" Margin="10,0,0,0" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Total price of orders:" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                        <TextBlock Text="{Binding TotalPriceOfOrders, StringFormat=N2}" Margin="10,0,0,0" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                    </StackPanel>
+                </StackPanel>
             </GroupBox>
 
             <GroupBox
-                Header="Shadow Header"
+                Header="Products Info"
                 Style="{DynamicResource MaterialDesignGroupBox}"
-                Margin="410,10,10,10"
+                Margin="410,10,10,210"
                 materialDesign:ShadowAssist.ShadowDepth="Depth3"
                 BorderThickness="0"
                 materialDesign:ColorZoneAssist.Background="MidnightBlue"
                 materialDesign:ColorZoneAssist.Foreground="WhiteSmoke"
                 materialDesign:ColorZoneAssist.Mode="Custom">
-                <TextBlock
-                    Margin="6,6,6,6"
-                    TextWrapping="Wrap"
-                    Text="Short loin picanha boudin pork belly. Ground round porchetta biltong, cow t-bone tri-tip strip steak chuck filet mignon jowl turducken. Landjaeger strip steak pork chop, jowl sirloin pork capicola andouille. Kevin ribeye tongue, drumstick hamburger frankfurter t-bone corned beef beef biltong cow venison. Biltong picanha bresaola pork belly, filet mignon spare ribs doner pork chop kielbasa. Swine flank drumstick pork belly pancetta spare ribs rump filet mignon." />
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Total count of products:" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                        <TextBlock Text="{Binding TotalCountOfProducts,StringFormat=N0}" Margin="10,0,0,0" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Total price of products:" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                        <TextBlock Text="{Binding TotalPriceOfProducts,StringFormat=N2}" Margin="10,0,0,0" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Total count of orders:" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                        <TextBlock Text="{Binding TotalCountOfOrders,StringFormat=N0}" Margin="10,0,0,0" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Total price of orders:" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                        <TextBlock Text="{Binding TotalPriceOfOrders, StringFormat=N2}" Margin="10,0,0,0" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                    </StackPanel>
+                </StackPanel>
             </GroupBox>
-            
+
             <GroupBox
                 Header="Shadow Header"
                 Style="{DynamicResource MaterialDesignGroupBox}"
@@ -75,10 +104,14 @@
                 materialDesign:ColorZoneAssist.Background="MidnightBlue"
                 materialDesign:ColorZoneAssist.Foreground="WhiteSmoke"
                 materialDesign:ColorZoneAssist.Mode="Custom">
-                <TextBlock
-                    Margin="6,6,6,6"
-                    TextWrapping="Wrap"
-                    Text="Short loin picanha boudin pork belly. Ground round porchetta biltong, cow t-bone tri-tip strip steak chuck filet mignon jowl turducken. Landjaeger strip steak pork chop, jowl sirloin pork capicola andouille. Kevin ribeye tongue, drumstick hamburger frankfurter t-bone corned beef beef biltong cow venison. Biltong picanha bresaola pork belly, filet mignon spare ribs doner pork chop kielbasa. Swine flank drumstick pork belly pancetta spare ribs rump filet mignon." />
+                <StackPanel>
+                    <DataGrid ItemsSource="{Binding MostUsedProducts}" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
             </GroupBox>
 
         </Grid>

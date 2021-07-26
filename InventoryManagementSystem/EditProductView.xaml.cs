@@ -14,11 +14,11 @@ using System.Windows.Shapes;
 namespace InventoryManagementSystem
 {
     /// <summary>
-    /// Interaction logic for SelectedWarehouseView.xaml
+    /// Interaction logic for EditProductView.xaml
     /// </summary>
-    public partial class SelectedWarehouseView : UserControl
+    public partial class EditProductView : UserControl
     {
-        public SelectedWarehouseView()
+        public EditProductView()
         {
             InitializeComponent();
         }

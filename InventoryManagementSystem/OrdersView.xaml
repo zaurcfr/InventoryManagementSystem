@@ -33,8 +33,26 @@
 
         <DataGrid 
             Grid.Row="2" 
+            Name="OrdersGrid"
             ItemsSource="{Binding Orders}"
             SelectedItem="{Binding SelectedOrder,Mode=OneWayToSource}">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+                                Height="40"
+                                ToolTip=""
+                                Background="#302b63"
+                                Foreground="WhiteSmoke"
+                                Content="Delete"
+                                materialDesign:ButtonAssist.CornerRadius="7"
+                                Command="{Binding ElementName = OrdersGrid, Path = DataContext.DeleteCommand}"
+                                CommandParameter="{Binding}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
         </DataGrid>
     </Grid>
 </UserControl>

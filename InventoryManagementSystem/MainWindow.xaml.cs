@@ -26,5 +26,10 @@ namespace InventoryManagementSystem
             InitializeComponent();
             this.DataContext = new MainViewModel();
         }
+
+        private void Quit(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

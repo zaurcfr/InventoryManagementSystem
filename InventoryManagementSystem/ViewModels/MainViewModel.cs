@@ -17,7 +17,8 @@ namespace InventoryManagementSystem.ViewModels
         private OrderViewModel _ordersViewModel { get; set; }
         private AddOrderViewModel _addOrdersViewModel { get; set; }
         private WarehouseViewModel _warehouseViewModel { get; set; }
-        private SelectedWarehouseViewModel _selectedWarehouseViewModel { get; set; }
+        private DeleteDialogViewModel _deleteDialogViewModel { get; set; }
+        private EditProductViewModel _editProductViewModel { get; set; }
 
         public event Action NavigateToHome;
         public event Action NavigateToProducts;
@@ -36,11 +37,13 @@ namespace InventoryManagementSystem.ViewModels
             _ordersViewModel = new OrderViewModel();
             _addOrdersViewModel = new AddOrderViewModel();
             _warehouseViewModel = new WarehouseViewModel();
-            _selectedWarehouseViewModel = new SelectedWarehouseViewModel();
+            _deleteDialogViewModel = new DeleteDialogViewModel();
+            _editProductViewModel = new EditProductViewModel();
 
             _productsViewModel.AddProductEvent += NavigateToAddProductView;
+            _productsViewModel.DeleteProductEvent += NavigateToDeleteProductView;
+            _productsViewModel.EditProductEvent += NavigateToEditProductView;
             _ordersViewModel.AddOrderEvent += NavigateToAddOrderView;
-            _warehouseViewModel.SelectedWarehouseEvent += NavigateToSelectedWarehouseView;
 
             NavigateToHome += NavigateToHomeView;
             NavToHomeCommand = new RelayCommand((e) => { NavigateToHome?.Invoke(); });
@@ -57,7 +60,6 @@ namespace InventoryManagementSystem.ViewModels
         }
 
         
-
         private void NavigateToHomeView()
         {
             CurrentVM = _homeViewModel;
@@ -66,10 +68,6 @@ namespace InventoryManagementSystem.ViewModels
         private void NavigateToWarehousesView()
         {
             CurrentVM = _warehouseViewModel;
-        }
-        private void NavigateToSelectedWarehouseView()
-        {
-            CurrentVM = _selectedWarehouseViewModel;
         }
 
         private void NavigateToAddOrderView()
@@ -88,6 +86,14 @@ namespace InventoryManagementSystem.ViewModels
         private void NavigateToAddProductView()
         {
             CurrentVM = _addProductsViewModel;
+        }
+        private void NavigateToEditProductView()
+        {
+            CurrentVM = _editProductViewModel;
+        }
+        private void NavigateToDeleteProductView()
+        {
+            CurrentVM = _deleteDialogViewModel;
         }
 
 

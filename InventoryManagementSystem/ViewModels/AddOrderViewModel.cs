@@ -6,22 +6,34 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Linq;
+using InventoryManagementSystem.Command;
+using System.Windows;
 
 namespace InventoryManagementSystem.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
     class AddOrderViewModel : BaseViewModel
     {
+        public Order Order { get; set; } = new Order();
         public ObservableCollection<Warehouse> Warehouses { get; set; } = new ObservableCollection<Warehouse>();
-        public Order Order { get; set; }
-
+        public Warehouse Warehouse { get; set; }
+        public ApplicationContext db { get; set; } = new ApplicationContext();
+        public RelayCommand AddCommand { get; set; }
         public AddOrderViewModel()
         {
-            using ApplicationContext db = new ApplicationContext();
-            foreach (var item in db.Warehouses)
-            {
-                Warehouses.Add(item);
-            }
+            Warehouses = new ObservableCollection<Warehouse>(db.Warehouses);
+
+            AddCommand = new RelayCommand(Add);
         }
+        private void Add(object obj)
+        {
+            Order.Warehouse = Warehouse;
+            var company = db.Companies.Find(1);
+            Order.Company = company;
+            db.Orders.Add(Order);
+            db.SaveChanges();
+            MessageBox.Show("Order added succesfully!");
+        }
+
     }
 }

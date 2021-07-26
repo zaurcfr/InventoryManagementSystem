@@ -15,43 +15,34 @@ namespace InventoryManagementSystem.ViewModels
     {
         public ObservableCollection<Order> Orders { get; set; } = new ObservableCollection<Order>();
         public Order SelectedOrder { get; set; }
-        public RelayCommand AddOrderCommand { get; set; }
+
         public event Action AddOrderEvent;
+        public RelayCommand AddOrderCommand { get; set; }
+        public RelayCommand DeleteCommand { get; set; }
         public OrderViewModel()
         {
             using ApplicationContext db = new ApplicationContext();
-            Order order1 = new Order
-            {
-                Name = "PC",
-                Price = 1000,
-                Quantity = 50,
-                IsDelivered = false,
-                Category = "Technology",
-                Description = "G"
-            };
-            Order order2 = new Order
-            {
-                Name = "Phone",
-                Price = 1000,
-                Quantity = 10,
-                IsDelivered = true,
-                Category = "Technology",
-                Description = "G"
-            };
-            db.Orders.Add(order1);
-            db.Orders.Add(order2);
-            foreach (var item in db.Orders.Include(o => o.Company).Include(o => o.Warehouse))
-            {
-                Orders.Add(item);
-            }
-            //db.SaveChanges();
+
+            Orders = new ObservableCollection<Order>(db.Orders.Include(o => o.Company).Include(o => o.Warehouse));
 
             AddOrderCommand = new RelayCommand(AddOrder);
+            DeleteCommand = new RelayCommand(Delete);
         }
 
         private void AddOrder(object obj)
         {
             AddOrderEvent?.Invoke();
+        }
+
+        private void Delete(object obj)
+        {
+            if (obj is Order order)
+            {
+                using ApplicationContext db = new ApplicationContext();
+                db.Orders.Remove(order);
+                Orders.Remove(order);
+                db.SaveChanges();
+            }
         }
     }
 }

@@ -22,12 +22,8 @@ namespace InventoryManagementSystem
         public WarehouseView()
         {
             InitializeComponent();
-            this.DataContext = new WarehouseViewModel();
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            WarehouseGrid.Visibility = Visibility.Visible;
-        }
+       
     }
 }

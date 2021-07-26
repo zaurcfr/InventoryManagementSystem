@@ -15,5 +15,9 @@ namespace InventoryManagementSystem.Models
         public string Description { get; set; }
         public Warehouse Warehouse { get; set; }
         public Company Company { get; set; }
+        public override string ToString()
+        {
+            return $"{Id} - {Name}";
+        }
     }
 }

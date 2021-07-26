@@ -6,26 +6,34 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Windows;
+using System.Linq;
 
 namespace InventoryManagementSystem.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
     public class AddProductViewModel : BaseViewModel
     {
-        public Product Product { get; set; }
+        public Product Product { get; set; } = new Product();
         public ObservableCollection<Warehouse> Warehouses { get; set; } = new ObservableCollection<Warehouse>();
-
+        public Warehouse Warehouse { get; set; }
+        public ApplicationContext db { get; set; } = new ApplicationContext();
         public RelayCommand AddCommand { get; set; }
         public AddProductViewModel()
         {
-            using ApplicationContext db = new ApplicationContext();
-            foreach (var item in db.Warehouses) Warehouses.Add(item);
+            Warehouses = new ObservableCollection<Warehouse>(db.Warehouses);
+            
+            AddCommand = new RelayCommand(Add);
+        }
 
-            AddCommand = new RelayCommand((e) =>
-              {
-                  db.Products.Add(Product);
-                  db.SaveChanges();
-              });
+        private void Add(object obj)
+        {
+            Product.Warehouse = Warehouse;
+            var company = db.Companies.Find(1);
+            Product.Company = company;
+            db.Products.Add(Product);
+            db.SaveChanges();
+            MessageBox.Show("Product added succesfully!");
         }
 
     }

@@ -14,6 +14,7 @@ namespace InventoryManagementSystem.Repository
         public DbSet<User> Users { get; set; }
         public DbSet<Warehouse> Warehouses { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<Company> Companies { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -28,11 +29,11 @@ namespace InventoryManagementSystem.Repository
         {
             var builder = new ConfigurationBuilder();
             builder.SetBasePath(Directory.GetCurrentDirectory());
-            //builder.AddJsonFile("C:\\Users\\Zaur\\source\\repos\\InventoryManagementSystem\\InventoryManagementSystem\\appsettings.json");
-            builder.AddJsonFile("C:\\Users\\cefe_a8xp\\source\\repos\\InventoryManagementSystem\\InventoryManagementSystem\\appsettings.json");
+            builder.AddJsonFile("C:\\Users\\Zaur\\source\\repos\\InventoryManagementSystem\\InventoryManagementSystem\\InventoryManagementSystem\\appsettings.json");
+            //builder.AddJsonFile("C:\\Users\\cefe_a8xp\\source\\repos\\InventoryManagementSystem\\InventoryManagementSystem\\appsettings.json");
             var config = builder.Build();
 
-            string connectionString = config.GetConnectionString("StepConnection");
+            string connectionString = config.GetConnectionString("DefaultConnection");
             optionsBuilder.UseSqlServer(connectionString);
             base.OnConfiguring(optionsBuilder);
         }

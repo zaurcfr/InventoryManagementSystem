@@ -31,6 +31,17 @@
             Margin="10,0,650,0"
             materialDesign:ButtonAssist.CornerRadius="7"
             Command="{Binding AddProductCommand}"/>
+        
+        <Button
+            Grid.Row="1"
+            Height="50"
+            ToolTip=""
+            Background="#302b63"
+            Foreground="WhiteSmoke"
+            Content="Edit Product"
+            Margin="200,0,450,0"
+            materialDesign:ButtonAssist.CornerRadius="7"
+            Command="{Binding EditProductCommand}"/>
 
         <DataGrid 
             Grid.Row="2"
