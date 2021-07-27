@@ -19,6 +19,8 @@ namespace InventoryManagementSystem.ViewModels
         private WarehouseViewModel _warehouseViewModel { get; set; }
         private DeleteDialogViewModel _deleteDialogViewModel { get; set; }
         private EditProductViewModel _editProductViewModel { get; set; }
+        private SellProductViewModel _sellProductViewModel { get; set; }
+        
 
         public event Action NavigateToHome;
         public event Action NavigateToProducts;
@@ -39,10 +41,12 @@ namespace InventoryManagementSystem.ViewModels
             _warehouseViewModel = new WarehouseViewModel();
             _deleteDialogViewModel = new DeleteDialogViewModel();
             _editProductViewModel = new EditProductViewModel();
+            _sellProductViewModel = new SellProductViewModel();
 
             _productsViewModel.AddProductEvent += NavigateToAddProductView;
-            _productsViewModel.DeleteProductEvent += NavigateToDeleteProductView;
+            _productsViewModel.SellProductEvent += NavigateToSellProductView;
             _productsViewModel.EditProductEvent += NavigateToEditProductView;
+            
             _ordersViewModel.AddOrderEvent += NavigateToAddOrderView;
 
             NavigateToHome += NavigateToHomeView;
@@ -57,6 +61,7 @@ namespace InventoryManagementSystem.ViewModels
             NavigateToWarehouses += NavigateToWarehousesView;
             NavToWarehouseCommand = new RelayCommand((e) => { NavigateToWarehouses?.Invoke(); });
 
+            CurrentVM = _homeViewModel;
         }
 
         
@@ -91,9 +96,9 @@ namespace InventoryManagementSystem.ViewModels
         {
             CurrentVM = _editProductViewModel;
         }
-        private void NavigateToDeleteProductView()
+        private void NavigateToSellProductView()
         {
-            CurrentVM = _deleteDialogViewModel;
+            CurrentVM = _sellProductViewModel;
         }
 
 

@@ -23,7 +23,7 @@ namespace InventoryManagementSystem.ViewModels
         {
             using ApplicationContext db = new ApplicationContext();
 
-            Orders = new ObservableCollection<Order>(db.Orders.Include(o => o.Company).Include(o => o.Warehouse));
+            Orders = new ObservableCollection<Order>(db.Orders.Include(o => o.Company).Include(o => o.Warehouse).Include(o => o.Category));
 
             AddOrderCommand = new RelayCommand(AddOrder);
             DeleteCommand = new RelayCommand(Delete);

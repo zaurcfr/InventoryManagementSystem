@@ -7,75 +7,6 @@
              xmlns:local="clr-namespace:InventoryManagementSystem"
              mc:Ignorable="d" 
              d:DesignHeight="570" d:DesignWidth="800">
-    <!--<Grid>
-        <StackPanel Background="Gray">
-            <TextBox
-                Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                VerticalAlignment="Top"
-                Height="50"
-                AcceptsReturn="True"
-                TextWrapping="Wrap"
-                VerticalScrollBarVisibility="Auto"
-                materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
-                materialDesign:HintAssist.Hint="Name"
-                Margin="40,20,500,10"
-                Text="{Binding Order.Name, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox
-                Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                VerticalAlignment="Top"
-                Height="50"
-                AcceptsReturn="True"
-                TextWrapping="Wrap"
-                VerticalScrollBarVisibility="Auto"
-                materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
-                materialDesign:HintAssist.Hint="Price"
-                Margin="40,10,500,10"
-                Text="{Binding Order.Price, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox
-                Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                VerticalAlignment="Top"
-                Height="50"
-                AcceptsReturn="True"
-                TextWrapping="Wrap"
-                VerticalScrollBarVisibility="Auto"
-                materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
-                materialDesign:HintAssist.Hint="Quantity"
-                Margin="40,10,500,10"
-                Text="{Binding Order.Quantity, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox
-                Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                VerticalAlignment="Top"
-                Height="50"
-                AcceptsReturn="True"
-                TextWrapping="Wrap"
-                VerticalScrollBarVisibility="Auto"
-                materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
-                materialDesign:HintAssist.Hint="Category"
-                Margin="40,10,500,10"
-                Text="{Binding Order.Category, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox
-                Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                VerticalAlignment="Top"
-                Height="50"
-                AcceptsReturn="True"
-                TextWrapping="Wrap"
-                VerticalScrollBarVisibility="Auto"
-                materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
-                materialDesign:HintAssist.Hint="Description"
-                Margin="40,10,500,10"
-                Text="{Binding Order.Description, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-            <Button
-                Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                Height="50"
-                ToolTip=""
-                Background="#302b63"
-                Foreground="WhiteSmoke"
-                Content="Order"
-                Margin="200,10,500,10"
-                materialDesign:ButtonAssist.CornerRadius="7"
-                Command="{Binding AddCommand}"/>
-        </StackPanel>
-    </Grid>-->
 
     <Grid>
 
@@ -123,18 +54,18 @@
                 materialDesign:HintAssist.Hint="Quantity"
                 Margin="450,130,80,10"
                 Text="{Binding Order.Quantity, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-        <TextBox
-                Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                VerticalAlignment="Top"
-                Height="50"
-                AcceptsReturn="True"
-                TextWrapping="Wrap"
-                VerticalScrollBarVisibility="Auto"
-                materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
-                materialDesign:HintAssist.Hint="Category"
-                Margin="80,230,450,10"
-                Text="{Binding Order.Category, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-        
+        <ComboBox
+            Grid.Row="0"
+            Style="{StaticResource MaterialDesignOutlinedComboBox}"
+            materialDesign:HintAssist.Hint="Select Category"
+            VerticalAlignment="Top"
+            ItemsSource="{Binding Categories}"
+            materialDesign:TextFieldAssist.HasClearButton="True"
+            Height="50"
+            materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
+            Margin="80,230,450,10"
+            SelectedItem="{Binding Category,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+
         <ComboBox
             Grid.Row="0"
             Style="{StaticResource MaterialDesignOutlinedComboBox}"

@@ -35,7 +35,8 @@
             Grid.Row="2" 
             Name="OrdersGrid"
             ItemsSource="{Binding Orders}"
-            SelectedItem="{Binding SelectedOrder,Mode=OneWayToSource}">
+            SelectedItem="{Binding SelectedOrder,Mode=OneWayToSource}"
+            IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>

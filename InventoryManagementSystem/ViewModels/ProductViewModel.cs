@@ -18,18 +18,20 @@ namespace InventoryManagementSystem.ViewModels
         public Product SelectedProduct { get; set; }
 
         public event Action AddProductEvent;
-        public event Action DeleteProductEvent;
+        public event Action SellProductEvent;
         public event Action EditProductEvent;
         public RelayCommand AddProductCommand { get; set; }
         public RelayCommand DeleteCommand { get; set; }
         public RelayCommand EditProductCommand { get; set; }
+        public RelayCommand SellProductCommand { get; set; }
         ApplicationContext db = new ApplicationContext();
         public ProductViewModel()
         {
-            Products = new ObservableCollection<Product>(db.Products.Include(p => p.Company).Include(p => p.Warehouse));
+            Products = new ObservableCollection<Product>(db.Products.Include(p => p.Company).Include(p => p.Warehouse).Include(p=>p.Category));
 
             AddProductCommand = new RelayCommand(AddProduct);
             EditProductCommand = new RelayCommand(EditProduct);
+            SellProductCommand = new RelayCommand(SellProduct);
             DeleteCommand = new RelayCommand(Delete);
         }
 
@@ -40,6 +42,10 @@ namespace InventoryManagementSystem.ViewModels
         private void EditProduct(object obj)
         {
             EditProductEvent?.Invoke();
+        }
+        private void SellProduct(object obj)
+        {
+            SellProductEvent?.Invoke();
         }
 
         private void Delete(object obj)

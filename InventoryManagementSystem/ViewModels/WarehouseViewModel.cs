@@ -22,22 +22,24 @@ namespace InventoryManagementSystem.ViewModels
         public double TotalPriceOfProducts { get; set; }
         public int TotalCountOfOrders { get; set; }
         public double TotalPriceOfOrders { get; set; }
+        public Company Company { get; set; }
 
         public WarehouseViewModel()
         {
-            Warehouses = new ObservableCollection<Warehouse>(db.Warehouses);
+            Warehouses = new ObservableCollection<Warehouse>(db.Warehouses.Include(w=>w.Company));
             SelectCommand = new RelayCommand(Select);
 
         }
 
         private void Select(object obj)
         {
+            Company = Warehouse.Company;
             foreach (var item in db.Products)
             {
                 if (item.Warehouse == Warehouse)
                 {
                     TotalCountOfProducts += item.Quantity;
-                    TotalPriceOfProducts += item.Price;
+                    TotalPriceOfProducts += item.Price*item.Quantity;
                 }
             }
             foreach (var item in db.Orders)

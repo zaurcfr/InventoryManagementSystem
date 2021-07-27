@@ -11,7 +11,7 @@ namespace InventoryManagementSystem.Models
         public string Status { get; set; }
         public double Price { get; set; }
         public int Quantity { get; set; }
-        public string Category { get; set; }
+        public Category Category { get; set; }
         public string Description { get; set; }
         public Warehouse Warehouse { get; set; }
         public Company Company { get; set; }

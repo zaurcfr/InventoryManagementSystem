@@ -15,13 +15,16 @@ namespace InventoryManagementSystem.ViewModels
     public class AddProductViewModel : BaseViewModel
     {
         public Product Product { get; set; } = new Product();
-        public ObservableCollection<Warehouse> Warehouses { get; set; } = new ObservableCollection<Warehouse>();
+        public ObservableCollection<Warehouse> Warehouses { get; set; }
+        public ObservableCollection<Category> Categories { get; set; }
         public Warehouse Warehouse { get; set; }
+        public Category Category { get; set; }
         public ApplicationContext db { get; set; } = new ApplicationContext();
         public RelayCommand AddCommand { get; set; }
         public AddProductViewModel()
         {
             Warehouses = new ObservableCollection<Warehouse>(db.Warehouses);
+            Categories = new ObservableCollection<Category>(db.Categories);
             
             AddCommand = new RelayCommand(Add);
         }
@@ -29,6 +32,7 @@ namespace InventoryManagementSystem.ViewModels
         private void Add(object obj)
         {
             Product.Warehouse = Warehouse;
+            Product.Category = Category;
             var company = db.Companies.Find(1);
             Product.Company = company;
             db.Products.Add(Product);

@@ -19,7 +19,10 @@ namespace InventoryManagementSystem
     [AddINotifyPropertyChangedInterface]
     public partial class App : Application
     {
-        
+        public App()
+        {
+
+        }
 
     }
 }

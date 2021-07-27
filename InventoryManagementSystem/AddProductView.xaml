@@ -53,17 +53,17 @@
                 materialDesign:HintAssist.Hint="Quantity"
                 Margin="450,130,80,10"
                 Text="{Binding Product.Quantity, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-        <TextBox
-                Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                VerticalAlignment="Top"
-                Height="50"
-                AcceptsReturn="True"
-                TextWrapping="Wrap"
-                VerticalScrollBarVisibility="Auto"
-                materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
-                materialDesign:HintAssist.Hint="Category"
-                Margin="80,230,450,10"
-                Text="{Binding Product.Category, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        <ComboBox
+            Grid.Row="0"
+            Style="{StaticResource MaterialDesignOutlinedComboBox}"
+            materialDesign:HintAssist.Hint="Select Category"
+            VerticalAlignment="Top"
+            ItemsSource="{Binding Categories}"
+            materialDesign:TextFieldAssist.HasClearButton="True"
+            Height="50"
+            materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
+            Margin="80,230,450,10"
+            SelectedItem="{Binding Category,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
         <TextBox
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 VerticalAlignment="Top"

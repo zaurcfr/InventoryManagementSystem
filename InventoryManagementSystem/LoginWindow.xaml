@@ -79,8 +79,8 @@
                 >
                     <Ellipse.Fill>
                         <ImageBrush
-                        Stretch="UniformToFill"
-                        ImageSource="Images/imslogo.jpg">
+                            Stretch="UniformToFill"
+                            ImageSource="Images/imslogo.jpg">
                         </ImageBrush>
                     </Ellipse.Fill>
                 </Ellipse>
