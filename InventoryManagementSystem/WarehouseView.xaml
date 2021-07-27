@@ -19,14 +19,13 @@
             Style="{StaticResource MaterialDesignOutlinedComboBox}"
             materialDesign:HintAssist.Hint="Select Warehouse"
             ItemsSource="{Binding Warehouses}"
-            materialDesign:TextFieldAssist.HasClearButton="True"
             Width="256"
             materialDesign:TextFieldAssist.UnderlineBrush="MidnightBlue"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Margin="20,10"
             SelectedItem="{Binding Warehouse}">
-            
+
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectionChanged">
                     <i:InvokeCommandAction Command="{Binding SelectCommand}"></i:InvokeCommandAction>
@@ -35,75 +34,83 @@
 
         </ComboBox>
 
-        <Grid x:Name="WarehouseGrid" Grid.Row="1" Visibility="Visible" Margin="0,40,0,0">
+        <Border
+            Grid.Row="1"
+            CornerRadius="5" 
+            BorderBrush="MidnightBlue"
+            BorderThickness="2"
+            Margin="10">
 
-            <GroupBox
+            <Grid x:Name="WarehouseGrid" Grid.Row="1" Visibility="Visible" Margin="0,40,0,0">
+
+                <GroupBox
                 Header="Warehouse Info"
                 Style="{DynamicResource MaterialDesignGroupBox}"
-                Margin="10,10,410,210"
+                Margin="10,0,410,190"
                 materialDesign:ShadowAssist.ShadowDepth="Depth3"
                 BorderThickness="0"
                 materialDesign:ColorZoneAssist.Background="MidnightBlue"
                 materialDesign:ColorZoneAssist.Foreground="WhiteSmoke"
                 materialDesign:ColorZoneAssist.Mode="Custom">
-                <StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="5">
-                        <TextBlock Text="Warehouse Id:" FontSize="20" FontWeight="SemiBold"></TextBlock>
-                        <TextBlock Text="{Binding Warehouse.Id}" Margin="10,0,0,0" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="Warehouse Id:" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                            <TextBlock Text="{Binding Warehouse.Id}" Margin="10,0,0,0" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="Warehouse Name:" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                            <TextBlock Text="{Binding Warehouse.Name}" Margin="10,0,0,0" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="Company:" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                            <TextBlock Text="{Binding Company}" Margin="10,0,0,0" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                        </StackPanel>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="5">
-                        <TextBlock Text="Warehouse Name:" FontSize="20" FontWeight="SemiBold"></TextBlock>
-                        <TextBlock Text="{Binding Warehouse.Name}" Margin="10,0,0,0" FontSize="20" FontWeight="SemiBold"></TextBlock>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="5">
-                        <TextBlock Text="Company:" FontSize="20" FontWeight="SemiBold"></TextBlock>
-                        <TextBlock Text="{Binding Company}" Margin="10,0,0,0" FontSize="20" FontWeight="SemiBold"></TextBlock>
-                    </StackPanel>
-                </StackPanel>
-            </GroupBox>
+                </GroupBox>
 
-            <GroupBox
+                <GroupBox
                 Header="Products Info"
                 Style="{DynamicResource MaterialDesignGroupBox}"
-                Margin="410,10,10,210"
+                Margin="410,0,10,190"
                 materialDesign:ShadowAssist.ShadowDepth="Depth3"
                 BorderThickness="0"
                 materialDesign:ColorZoneAssist.Background="MidnightBlue"
                 materialDesign:ColorZoneAssist.Foreground="WhiteSmoke"
                 materialDesign:ColorZoneAssist.Mode="Custom">
-                <StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="5">
-                        <TextBlock Text="Total count of products:" FontSize="20" FontWeight="SemiBold"></TextBlock>
-                        <TextBlock Text="{Binding TotalCountOfProducts,StringFormat=N0}" Margin="10,0,0,0" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="Total count of products:" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                            <TextBlock Text="{Binding TotalCountOfProducts,StringFormat=N0}" Margin="10,0,0,0" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="Total price of products:" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                            <TextBlock Text="{Binding TotalPriceOfProducts,StringFormat=N1}" Margin="10,0,0,0" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="Total count of orders:" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                            <TextBlock Text="{Binding TotalCountOfOrders,StringFormat=N0}" Margin="10,0,0,0" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBlock Text="Total price of orders:" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                            <TextBlock Text="{Binding TotalPriceOfOrders, StringFormat=N1}" Margin="10,0,0,0" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                        </StackPanel>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="5">
-                        <TextBlock Text="Total price of products:" FontSize="20" FontWeight="SemiBold"></TextBlock>
-                        <TextBlock Text="{Binding TotalPriceOfProducts,StringFormat=N2}" Margin="10,0,0,0" FontSize="20" FontWeight="SemiBold"></TextBlock>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="5">
-                        <TextBlock Text="Total count of orders:" FontSize="20" FontWeight="SemiBold"></TextBlock>
-                        <TextBlock Text="{Binding TotalCountOfOrders,StringFormat=N0}" Margin="10,0,0,0" FontSize="20" FontWeight="SemiBold"></TextBlock>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="5">
-                        <TextBlock Text="Total price of orders:" FontSize="20" FontWeight="SemiBold"></TextBlock>
-                        <TextBlock Text="{Binding TotalPriceOfOrders, StringFormat=N2}" Margin="10,0,0,0" FontSize="20" FontWeight="SemiBold"></TextBlock>
-                    </StackPanel>
-                </StackPanel>
-            </GroupBox>
+                </GroupBox>
 
-            <GroupBox
+                <GroupBox
                 Header=""
                 Style="{DynamicResource MaterialDesignGroupBox}"
-                Margin="10,210,10,10"
+                Margin="10,220,10,10"
                 materialDesign:ShadowAssist.ShadowDepth="Depth3"
                 BorderThickness="0"
                 materialDesign:ColorZoneAssist.Background="MidnightBlue"
                 materialDesign:ColorZoneAssist.Foreground="WhiteSmoke"
                 materialDesign:ColorZoneAssist.Mode="Custom">
 
-            </GroupBox>
+                </GroupBox>
 
-        </Grid>
+            </Grid>
+        </Border>
 
     </Grid>
 </UserControl>

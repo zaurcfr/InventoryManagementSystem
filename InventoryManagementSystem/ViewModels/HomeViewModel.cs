@@ -23,7 +23,7 @@ namespace InventoryManagementSystem.ViewModels
         public HomeViewModel()
         {
             Categories = new ObservableCollection<Category>(db.Categories);
-            MostUsedProducts = new ObservableCollection<Product>(db.Products.OrderByDescending(p => p.Quantity).Take(5));
+            MostUsedProducts = new ObservableCollection<Product>(db.Products.OrderByDescending(p => p.Quantity).Take(10));
             foreach (var item in db.Products)
             {
                 TotalProductsCount += item.Quantity;
