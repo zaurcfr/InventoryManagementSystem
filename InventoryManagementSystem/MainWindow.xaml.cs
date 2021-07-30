@@ -31,5 +31,11 @@ namespace InventoryManagementSystem
         {
             this.Close();
         }
+
+        private void ToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (MenuPanel.Visibility == Visibility.Visible) MenuPanel.Visibility = Visibility.Collapsed;
+            else MenuPanel.Visibility = Visibility.Visible;
+        }
     }
 }

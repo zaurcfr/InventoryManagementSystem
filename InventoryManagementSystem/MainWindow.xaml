@@ -49,88 +49,95 @@
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Row="0" Background="#0f0c29">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="4*"></RowDefinition>
-            </Grid.RowDefinitions>
 
-            <Image Grid.Row="0" Source="Images/imslogo.jpg"></Image>
-            <StackPanel Grid.Row="1" Margin="0,20,0,0">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Home" Foreground="WhiteSmoke" Width="50" Height="50"/>
-                    <Button
-                        Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                        Height="50"
-                        ToolTip=""
-                        Background="Transparent"
-                        Foreground="WhiteSmoke"
-                        Content="Home"
-                        Margin="0,0"
-                        materialDesign:ButtonAssist.CornerRadius="7"
-                        BorderBrush="Transparent"
-                        Command="{Binding NavToHomeCommand}"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Cube" Foreground="WhiteSmoke" Width="50" Height="50"/>
-                    <Button
-                        Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                        Height="50"
-                        ToolTip=""
-                        Background="Transparent"
-                        Foreground="WhiteSmoke"
-                        Content="Products"
-                        Margin="0,0"
-                        materialDesign:ButtonAssist.CornerRadius="7"
-                        BorderBrush="Transparent"
-                        Command="{Binding NavToProductCommand}"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Cart" Foreground="WhiteSmoke" Width="50" Height="50"/>
-                    <Button
-                        Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                        Height="50"
-                        ToolTip=""
-                        Background="Transparent"
-                        Foreground="WhiteSmoke"
-                        Content="Orders"
-                        Margin="0,0"
-                        materialDesign:ButtonAssist.CornerRadius="7"
-                        BorderBrush="Transparent"
-                        Command="{Binding NavToOrderCommand}"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Warehouse" Foreground="WhiteSmoke" Width="50" Height="50"/>
-                    <Button
-                        Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                        Height="50"
-                        ToolTip=""
-                        Background="Transparent"
-                        Foreground="WhiteSmoke"
-                        Content="Warehouses"
-                        Margin="0,0"
-                        materialDesign:ButtonAssist.CornerRadius="7"
-                        BorderBrush="Transparent"
-                        Command="{Binding NavToWarehouseCommand}"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="ExitToApp" Foreground="WhiteSmoke" Width="50" Height="50"/>
-                    <Button
-                        Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                        Height="50"
-                        ToolTip=""
-                        Background="Transparent"
-                        Foreground="WhiteSmoke"
-                        Content="Quit"
-                        Margin="0,0"
-                        materialDesign:ButtonAssist.CornerRadius="7"
-                        BorderBrush="Transparent"
-                        Click="Quit"/>
-                </StackPanel>
+            <StackPanel  Margin="0,0,0,0">
 
+                <ToggleButton
+                    Style="{DynamicResource MaterialDesignHamburgerToggleButton}"
+                    HorizontalAlignment="Left"
+                    Click="ToggleButton_Click"
+                    Foreground="WhiteSmoke"
+                    Margin="10">
+                </ToggleButton>
+
+
+                <StackPanel Visibility="Hidden" Name="MenuPanel">
+
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Home" Foreground="WhiteSmoke" Width="50" Height="50"/>
+                        <Button
+                            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                            Height="50"
+                            ToolTip=""
+                            Background="Transparent"
+                            Foreground="WhiteSmoke"
+                            Content="Home"
+                            Margin="0,0"
+                            materialDesign:ButtonAssist.CornerRadius="7"
+                            BorderBrush="Transparent"
+                            Command="{Binding NavToHomeCommand}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Cube" Foreground="WhiteSmoke" Width="50" Height="50"/>
+                        <Button
+                            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                            Height="50"
+                            ToolTip=""
+                            Background="Transparent"
+                            Foreground="WhiteSmoke"
+                            Content="Products"
+                            Margin="0,0"
+                            materialDesign:ButtonAssist.CornerRadius="7"
+                            BorderBrush="Transparent"
+                            Command="{Binding NavToProductCommand}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Cart" Foreground="WhiteSmoke" Width="50" Height="50"/>
+                        <Button
+                            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                            Height="50"
+                            ToolTip=""
+                            Background="Transparent"
+                            Foreground="WhiteSmoke"
+                            Content="Orders"
+                            Margin="0,0"
+                            materialDesign:ButtonAssist.CornerRadius="7"
+                            BorderBrush="Transparent"
+                            Command="{Binding NavToOrderCommand}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Warehouse" Foreground="WhiteSmoke" Width="50" Height="50"/>
+                        <Button
+                            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                            Height="50"
+                            ToolTip=""
+                            Background="Transparent"
+                            Foreground="WhiteSmoke"
+                            Content="Warehouses"
+                            Margin="0,0"
+                            materialDesign:ButtonAssist.CornerRadius="7"
+                            BorderBrush="Transparent"
+                            Command="{Binding NavToWarehouseCommand}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="ExitToApp" Foreground="WhiteSmoke" Width="50" Height="50"/>
+                        <Button
+                            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                            Height="50"
+                            ToolTip=""
+                            Background="Transparent"
+                            Foreground="WhiteSmoke"
+                            Content="Quit"
+                            Margin="0,0"
+                            materialDesign:ButtonAssist.CornerRadius="7"
+                            BorderBrush="Transparent"
+                            Click="Quit"/>
+                    </StackPanel>
+
+                </StackPanel>
             </StackPanel>
         </Grid>
 
-        <!--<ContentControl Grid.Column="0" Content="{Binding HomeViewModel}"></ContentControl>-->
         <ContentControl Grid.Column="1" Content="{Binding CurrentVM}"></ContentControl>
 
     </Grid>
